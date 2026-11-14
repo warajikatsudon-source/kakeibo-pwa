@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>家計簿PWA</title>
+<title>家計簿</title>
 
-<link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="style.css">
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 
 <body>
@@ -23,17 +24,28 @@
 <input type="date" id="date">
 
 <select id="type">
-<option value="収入">収入</option>
-<option value="支出">支出</option>
+    <option value="収入">収入</option>
+    <option value="支出">支出</option>
 </select>
 
-<input type="number" id="amount" placeholder="金額">
+<input
+    type="number"
+    id="amount"
+    placeholder="金額">
 
-<input type="text" id="category" placeholder="カテゴリ">
+<input
+    type="text"
+    id="category"
+    placeholder="カテゴリ">
 
-<input type="text" id="memo" placeholder="メモ">
+<input
+    type="text"
+    id="memo"
+    placeholder="メモ">
 
-<button onclick="addRecord()">保存</button>
+<button onclick="addRecord()">
+保存
+</button>
 
 </div>
 
@@ -53,7 +65,9 @@
 
 <h2>CSV</h2>
 
-<input type="file" id="csvFile">
+<input
+    type="file"
+    id="csvFile">
 
 <button onclick="importCSV()">
 CSV読込
@@ -66,19 +80,13 @@ CSV出力
 </div>
 
 <div class="card">
+
 <h2>支出割合</h2>
+
 <canvas id="expenseChart"></canvas>
+
 </div>
 
-<div class="card">
-<h2>取引一覧</h2>
-<div id="recordList"></div>
-</div>
-
-<script src="app.js"></script>
-
-</body>
-</html>
 <div class="card">
 
 <h2>月別推移</h2>
@@ -86,3 +94,17 @@ CSV出力
 <canvas id="trendChart"></canvas>
 
 </div>
+
+<div class="card">
+
+<h2>取引一覧</h2>
+
+<div id="recordList"></div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+
+</html>
