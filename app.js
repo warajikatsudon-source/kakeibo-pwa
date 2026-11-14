@@ -4,7 +4,7 @@ localStorage.getItem("records")
 ) || [];
 
 let chart = null;
-
+let trendChart=null;
 function saveData(){
 
     localStorage.setItem(
