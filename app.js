@@ -4,7 +4,7 @@ localStorage.getItem("records")
 ) || [];
 
 let chart = null;
-let trendChart=null;
+
 function saveData(){
 
     localStorage.setItem(
@@ -47,20 +47,42 @@ function render(){
     let income = 0;
     let expense = 0;
 
-    records.forEach((r,index)=>{
+    records.forEach(r=>{
 
-    list.innerHTML += `
-    <div class="record">
-        ${r.date}
-        ${r.category}
-        ¥${r.amount}
+        if(r.type==="収入"){
+            income += r.amount;
+        }else{
+            expense += r.amount;
+        }
 
-        <button onclick="deleteRecord(${index})">
-            削除
-        </button>
-    </div>
-    `;
-});
+    });
+
+    document.getElementById("income")
+    .innerText = income.toLocaleString();
+
+    document.getElementById("expense")
+    .innerText = expense.toLocaleString();
+
+    document.getElementById("balance")
+    .innerText =
+       (income-expense).toLocaleString();
+
+    const list =
+    document.getElementById("recordList");
+
+    list.innerHTML = "";
+
+    records.forEach(r=>{
+
+        list.innerHTML += `
+        <div class="record">
+            ${r.date}
+            ${r.category}
+            ¥${r.amount}
+        </div>
+        `;
+
+    });
 
     renderChart();
 }
@@ -190,12 +212,4 @@ if("serviceWorker" in navigator){
  navigator.serviceWorker
  .register("service-worker.js");
 
-}
-function deleteRecord(index){
-
-    records.splice(index,1);
-
-    saveData();
-
-    render();
 }
