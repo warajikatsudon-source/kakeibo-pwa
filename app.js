@@ -191,3 +191,11 @@ if("serviceWorker" in navigator){
  .register("service-worker.js");
 
 }
+function deleteRecord(index){
+
+    records.splice(index,1);
+
+    saveData();
+
+    render();
+}
